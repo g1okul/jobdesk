@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/ all.min.css');
+        @import url('https://fonts.googleapis.com/css?family=Comfortaa:wght@300;400; 500;600; 700&display=swap'); 
+        :root{
+           --main-color: #298069;
+           --red: red;
+           --light-color:#777;
+           --light-bg: #eee;
+           --black: #2c3e50;
+           --white:#fff;
+           --box-shadow:0.5rem rem ☐ rgba(0,0,0,.1);
+           --border:.1rem solid rgba(0,0,0,.2);
+        }
+        *{
+           font-family: 'Comfortaa', cursive;
+           margin: 0; padding: 0;
+           box-sizing: border-box;
+           text-decoration: none;
+           outline: none; border: none;
+        }
+        ::selection{
+            background-color: var(--main-color);
+            color: var(--white);
+        }
+        ::-webkit-scrollbar{
+            width: 1rem;
+            height:5rem;
+        }
+        ::-webkit-scrollbar-track{
+            background-color: transparent;
+        }
+        ::-webkit-scrollbar-thumb{
+            background-color: var(--main-color);
+        }
+        html{
+           font-size: 62.5%;
+           overflow-x: hidden;
+           scroll-padding-top: 7rem;
+           scroll-behavior: smooth;
+        }
+        body{
+            background-color: var(--light-bg);
+        }
+        section{
+            padding: 2rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        .heading{
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 3rm;
+            color: var(--black);
+            text-transform: capitalize;
+            padding: 1rem 0;
+        }
+        .section-title{
+            border-top:1rem solid var(--main-color);
+            border-bottom: 1rem solid(--main-color);
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+            font-size: 6rem;
+            text-transform: capitalize;
+        }
+        .btn{
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 3rem;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--white);
+            background-color:var(--main-color);
+            border-radius: .5rem;
+            text-transform: capitalize;
+            text-align: center;
+        }
+        .btn:hover{
+            background-color: var(--black);
+        }
+        .header{
+            position: sticky;
+            top: 0; left: 0; right: 0;
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+        }
+        .header .flex{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        #menu-btn{
+            font-size: 3rem;
+            color: var(--black);
+            cursor: pointer;
+            display: none;
+        }
+        }
+        .header .flex .logo{
+            font-size: 2.2rem;
+            color :var(--black)
+        }
+        .header .flex .logo{
+            margin-right: 5rem;
+            color:var(--light-color);
+        }
+        .header .flex .navbar a{
+            display: inline-block;
+            padding: 1rem 1.5rem;
+            font-size: 1.6rem;
+            color: var(--light-color);
+            border-radius: 5rem;
+            text-transform: capitalize;
+        }
+        .header .flex .navbar a:hover{
+            background-color: var(--main-color);
+            color: var(--white);
+        }
+
+
+        .about img{
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        .about .box{
+            background: var(--white);
+            border-radius: .5rem;
+            border: var(--border);
+            padding:2rem;
+            box-shadow: var(--box-shadow);
+        }
+        .about .box h3{
+            font-size: 2.5rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+            text-transform: capitalize;
+        }
+        .about .box p{
+            padding: 1rem 0;
+            line-height: 1.8rem;
+            color: var(--light-color);
+        }
+
+
+        .reviews .box-container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 35rem);
+            gap: 1.5rem;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .reviews .box-container .box{
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            bottom: var(--border);
+            border-radius: .5rem;
+            padding: 2rem;
+        }
+        .reviews .box-container .box .stars{
+            margin-bottom: 1.5rem;
+
+        }
+        .reviews .box-container .box .stars{
+            color: var(--main-color);
+            font-size: 1.8rem;
+        }
+        .reviews .box-container .box .title{
+            text-transform: capitalize;
+            font-size: 2rem;
+            color: var(--black);
+            text-align: right;
+        }
+        .reviews .box-container .box p{
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--light-color);
+            padding: 1rem;
+            line-height: 1.8;
+        }
+        .reviews .box-container .box .user{
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+        .reviews .box-container .box .user img{
+            height: 6rem;
+            width: 6rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .reviews .box-container .box .user h3{
+            font-size: 2rem;
+            color: var(--black);
+            margin-bottom: .5rem;
+            text-transform: capitalize;
+        }
+        .reviews .box-container .box .user span{
+            color: var(--light-color);
+            font-size: 1.6rem;
+        }
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .footer .grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 30rem);
+            gap:1.5rem;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .footer .grid .box h3{
+            font-size: 2rem;
+            color: var(--black);
+            margin: 1rem 0;
+            padding-bottom: 1rem;
+            text-transform: capitalize;
+        }
+        .footer .grid .box a{
+            display: block;
+            padding: 1.5rem 0;
+            font-size: 1.6rem;
+            color: var(--light-color);
+        }
+        .footer .grid .box a i{
+           color: var(--main-color);
+           margin-right: .8rem; 
+           transition: 2s linear;
+        }
+        .footer .grid .box a:hover i{
+            margin-right: 2rem;
+        }
+        .footer .credit{
+            text-align: center;
+            padding:3rem 2rem;
+            border-top:  --border ;
+            background-color: var(--white);
+            font-size: 2rem;
+            color: var(--light-color);
+            line-height: 1.5;
+        }
+        .footer .credit span{
+            color:var(--main-color);
+            text-transform: capitalize;
+        }
+
+
+
+
+
+
+
+        @media (max-width:991px ){
+            html{
+                font-size: 55%;
+            }
+            .section-title{
+                font-size:5rem;
+            }
+        }
+         @media (max-width:768px ){
+            #menu-btn{
+                display: inline-block ;
+            }
+            .header .flex .navbar{
+                position: absolute;
+                top: 99%; left: 0; right: 0;
+                border-top: var(--border);
+                background-color: var(--white);
+                padding: 1rem.5rem;
+                clip-path: polygon(0 0,100% 0,0 0);
+                transition: .2s linear;
+            }
+            .header .flex .navbar{
+                clip-path: polygon(0 0,100% 0,100% 100%,0 100%);  
+            }
+            .header .flex .navbar{
+                display: block;
+                padding: 1.5rem 2rem;
+            }
+            .section-title{
+                font-size: 4rem;
+                padding: 4rem 2rem;
+            }
+
+        }
+         @media (max-width:450px ){
+            html{
+                font-size: 50%;
+            }
+            .section-title{
+                font-size:3.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    
+<header class="header">
+    <section class="flex">
+        <div id="menu-btn" class="fa fa-bars" style="font-size:20 px"></div>
+        <a href="home.html" class="logo"><i class="fa fa-briefcase" style="font-size: 18px"></i>JobHunt</a>
+        <nav class="navbar">
+           <a href="home.html" >home</a>
+           <a href="about.html">about us</a>
+           <a href="jobs.html" >all jobs</a>
+           <a href="contact.html">contact us</a>
+           <a href="login.html" >account</a>
+        </nav>
+        <a href="#" class="btn" style = "margin-top: 0;">post jobs</a>
+    </section>
+</header>
+
+<div class="section-title">about us</div>
+
+
+    
+
+<section class="about">
+
+    <img src="https://us.123rf.com/450wm/vladwel/vladwel1607/vladwel160700014/59741849-person-working-on-computer-analyzing-abstract-graph-statistic-vector-illustration-concept-of.jpg?ver=6" alt="" >
+    <div class="box">
+        <h3>why choose us?</h3>
+        <p>Welcome to [GK Job Portal ], where opportunity meets talent. Our mission is to bridge the gap between aspiring professionals and leading employers by providing a dynamic platform that caters to the needs of both job seekers and recruiters. We pride ourselves on offering personalized experiences, leveraging cutting-edge technology to ensure seamless connections.</p>
+        <p> 
+            1.Opportunity meets talent: Emphasizes the core purpose of the portal.<br>
+            2.Aspiring professionals and leading employers: Specifies the primary users of the platform.<br>
+            3.Dynamic platform: Highlights the vibrant and active nature of the portal.<br>
+            4.Personalized experiences: Indicates a tailored approach to user needs.<br>
+            5.Cutting-edge technology: Suggests the use of the latest tools and innovations.<br>
+            6.Seamless connections: Implies ease and efficiency in matching job seekers with employers.<br>
+            7.Trusted partner: Builds trust and reliability.<br>
+            8.Innovation, integrity, and excellence: Core values that drive the portal.<br>
+            9.Thriving community: Suggests a growing and supportive user base.<br>
+            10.Future of recruitment: Positions the portal as forward-thinking and progressive.
+        </p>
+        <a href="contact.html" class="btn">contact us</a>
+    </div>
+</section>
+
+<div class="section-title">top reviews</div>
+
+<section class="reviews">
+    <div class="box-container">
+       <div class="box">
+          <div class="stars">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+          </div>
+          <h3 class="title">nice results</h3>
+          <p>The job portal offers a seamless user experience with a vast array of job listings and advanced search filters,
+            making job hunting efficient and straightforward.
+            However, occasional slow loading times can be a minor inconvenience.
+          </p>
+          <div class="user">
+            <img src="https://img.freepik.com/premium-photo/best-amazing-wonderful-this-photo-take-this-picture-your-work-ai-generated-top-lovely-photo_1169327-85415.jpg" alt="">
+            <div>
+                <h3>karthika</h3>
+                <span>web developer</span>
+            </div>
+          </div>
+       </div>
+
+
+       <div class="box">
+            <div class="stars">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <h3 class="title">easy to use</h3>
+            <p>The job portal offers a seamless user experience with a vast array of job listings and advanced search filters,
+              making job hunting efficient and straightforward.
+              However, occasional slow loading times can be a minor inconvenience.
+            </p>
+            <div class="user">
+                <img src="https://img.freepik.com/free-photo/celebration-deity-navratri_23-2151220028.jpg" alt="">
+                <div>
+                 <h3>janani</h3>
+                 <span>web designer</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="box">
+            <div class="stars">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <h3 class="title">wide range</h3>
+            <p>The job portal offers a seamless user experience with a vast array of job listings and advanced search filters,
+              making job hunting efficient and straightforward.
+              However, occasional slow loading times can be a minor inconvenience.
+            </p>
+            <div class="user">
+                <img src="https://cdn.pixabay.com/photo/2024/02/08/12/54/ai-generated-8561072_1280.png" alt="">
+                <div>
+                 <h3>isabella</h3>
+                 <span>web developer</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="box">
+            <div class="stars">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <h3 class="title">super results</h3>
+            <p>The job portal offers a seamless user experience with a vast array of job listings and advanced search filters,
+              making job hunting efficient and straightforward.
+              However, occasional slow loading times can be a minor inconvenience.
+            </p>
+            <div class="user">
+                <img src="https://cdn.pixabay.com/photo/2023/02/19/08/39/man-7799486_960_720.jpg" alt="">
+                <div>
+                 <h3>pankaj more</h3>
+                 <span>web designer</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="box">
+            <div class="stars">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <h3 class="title">very compactible</h3>
+            <p>The job portal offers a seamless user experience with a vast array of job listings and advanced search filters,
+              making job hunting efficient and straightforward.
+              However, occasional slow loading times can be a minor inconvenience.
+            </p>
+            <div class="user">
+                <img src="https://cdn.pixabay.com/photo/2023/12/14/10/51/ai-generated-8448657_1280.jpg" alt="">
+                <div>
+                 <h3>madonna sabestin</h3>
+                 <span>web designer</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="box">
+            <div class="stars">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <h3 class="title">amazing results</h3>
+            <p>The job portal offers a seamless user experience with a vast array of job listings and advanced search filters,
+              making job hunting efficient and straightforward.
+              However, occasional slow loading times can be a minor inconvenience.
+            </p>
+            <div class="user">
+                <img src="https://cdn.pixabay.com/photo/2024/02/17/05/33/ai-generated-8578746_1280.jpg" alt="">
+                <div>
+                 <h3>laura</h3>
+                 <span>web designer</span>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</section>
+
+
+  <footer class="footer">
+    <section class="grid">
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="home.html"><i class="fa fa-angle-right"  style="font-size:20px;"></i>home</a>
+            <a href="about.html"><i class="fa fa-angle-right" style="font-size:20px;"></i>about</a>
+            <a href="jobs.html"><i class="fa fa-angle-right" style="font-size:20px;"></i>all jobs</a>
+            <a href="contact.html"><i class="fa fa-angle-right" style="font-size:20px;"></i>contact us</a>
+            <a href="#"><i class="fa fa-angle-right" style="font-size:20px;"></i>filter search </a>
+        </div>
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#"><i class="fa fa-angle-right" style="font-size:20px;"></i>account</a>
+            <a href="login.html"><i class="fa fa-angle-right" style="font-size:20px;"></i>login</a>
+            <a href="register.html"><i class="fa fa-angle-right" style="font-size:20px;"></i>register</a>
+            <a href="#"><i class="fa fa-angle-right" style="font-size:20px;"></i>post jobs</a>
+            <a href="#"><i class="fa fa-angle-right" style="font-size:20px;"></i>dashboard</a>
+        </div>
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#"><i class="fa fa-facebook-f"  style="font-size:20px;"></i> facebook</a>
+            <a href="#"><i class="fa fa-twitter"     style="font-size:20px;"></i> twitter</a>
+            <a href="#"><i class="fa fa-instagram"   style="font-size:20px;"></i> instagram</a>
+            <a href="#"><i class="fa fa-linkedin-square" style="font-size:20px;"></i> linkedin</a>
+            <a href="#"><i class="fa fa-youtube-play" style="font-size:20px;"></i> youtube</a>
+        </div>
+    </section>
+  <div class="credit">
+    &copy; copyright @ 2023 by <span>MR.GK </span> |all rights reserved!
+  </div>
+  </footer>
+
+<script>
+    let navbar = document.querySelector('.header .flex  .navbar');
+
+    document.querySelector('#menu-btn').onclick  =  ()  => {
+      navbar.classList.toggle('active');
+    }
+
+    window.onscroll  =  ()  => {
+        navbar.classList.remove('active');
+    }
+
+    document.querySelectorAll('input[type="number"]').forEach(inputNumber  => {
+      inputNumber.oninput  = ()  =>{
+            if(inputNumber.value.length > inputNumber.maxLength) inputNumber.value
+            = inputNumber.value.slice(0,  inputNumber.maxLength);
+      };
+    });
+</script>
+
+</body>
+</html>

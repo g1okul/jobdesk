@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> View Company</title>
+    
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/ all.min.css');
+        @import url('https://fonts.googleapis.com/css?family=Comfortaa:wght@300;400; 500;600; 700&display=swap'); 
+        :root{
+           --main-color: #298069;
+           --red: red;
+           --light-color:#777;
+           --light-bg: #eee;
+           --black: #2c3e50;
+           --white:#fff;
+           --box-shadow:0.5rem rem ☐ rgba(0,0,0,.1);
+           --border:.1rem solid rgba(0,0,0,.2);
+        }
+        *{
+           font-family: 'Comfortaa', cursive;
+           margin: 0; padding: 0;
+           box-sizing: border-box;
+           text-decoration: none;
+           outline: none; border: none;
+        }
+        ::selection{
+            background-color: var(--main-color);
+            color: var(--white);
+        }
+        ::-webkit-scrollbar{
+            width: 1rem;
+            height:5rem;
+        }
+        ::-webkit-scrollbar-track{
+            background-color: transparent;
+        }
+        ::-webkit-scrollbar-thumb{
+            background-color: var(--main-color);
+        }
+        html{
+           font-size: 62.5%;
+           overflow-x: hidden;
+           scroll-padding-top: 7rem;
+           scroll-behavior: smooth;
+        }
+        body{
+            background-color: var(--light-bg);
+        }
+        section{
+            padding: 2rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        .heading{
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 3rm;
+            color: var(--black);
+            text-transform: capitalize;
+            padding: 1rem 0;
+        }
+        .btn{
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 3rem;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--white);
+            background-color:var(--main-color);
+            border-radius: .5rem;
+            text-transform: capitalize;
+            text-align: center;
+        }
+        .flex-btn{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn:hover{
+            background-color: var(--black);
+        }
+        .header{
+            position: sticky;
+            top: 0; left: 0; right: 0;
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+        }
+        .header .flex{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        #menu-btn{
+            font-size: 3rem;
+            color: var(--black);
+            cursor: pointer;
+            display: none;
+        }
+        }
+        .header .flex .logo{
+            font-size: 2.2rem;
+            color :var(--black)
+        }
+        .header .flex .logo{
+            margin-right: 5rem;
+            color:var(--light-color);
+        }
+        .header .flex .navbar a{
+            display: inline-block;
+            padding: 1rem 1.5rem;
+            font-size: 1.6rem;
+            color: var(--light-color);
+            border-radius: 5rem;
+            text-transform: capitalize;
+        }
+        .header .flex .navbar a:hover{
+            background-color: var(--main-color);
+            color: var(--white);
+        }
+        .jobs-container .box-container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 35rem);
+            gap: 1.5rem;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        .jobs-container .heading{
+            font-size: 3rem;
+        }
+        .jobs-container .box-container .box{
+            background-color: var(--white);
+            border-radius: .5rem;
+            border: var(--box-shadow);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            overflow-x: hidden;
+        }
+        
+        .jobs-container .box-container .box .company{
+            display:flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .jobs-container .box-container .box .company img{
+            height: 6rem;
+            width: 6rem;
+            object-fit: contain;
+        }
+        .jobs-container .box-container .box .company h3{
+            font-size: 1.8rem;
+            color: var(--black);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-transform: capitalize;
+            padding: .5rem;
+        }
+        .jobs-container .box-container .box .company p{
+            color: var(--light-color);
+            font-size: 1.6rem;
+        }
+
+        .jobs-container .box-container .box .job-title{
+            font-size: 2rem;
+            color: var(--black);
+            text-transform: capitalize;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .jobs-container .box-container .box .location{
+            padding: .7rem 0;
+            font-size: 1.6rem;
+            color: var(--light-color);
+        }
+
+        .jobs-container .box-container .box .location i{
+            margin-right: .3rem;
+            color: var(--main-color);
+        }
+
+        .jobs-container .box-container .box .tags{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+
+        .jobs-container .box-container .box .tags p{
+            padding: 1.2rem;
+            border-radius: .5rem;
+            background: var(--light-bg);
+            font-size: 1.6rem;
+            color: var(--black);
+        }
+
+        .jobs-container .box-container .box .tags p i{
+            margin-right: .5rem;
+            color: var(--black);
+        }
+
+        .jobs-container .box-container .box .fa-heart{
+            background: var(--light-bg);
+            border-radius: .5rem;
+            color: var(--light-color);
+            font-size:1.8rem ;
+            cursor: pointer;
+            height: 4rem;
+            width: 4.5rem;
+            line-height: 4rem;
+        }
+        .jobs-container .box-container .box .fa-heart:hover{
+            background-color: var(--black);
+            color: var(--white);
+        }
+        .view-company .details{
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            border: var(--border);
+            border-radius: .5rem;
+            background-color: var(--white);
+            padding: 2rem;
+        }
+        .view-company .heading{
+            font-size: 3rem;
+        }
+        .view-company .details .info{
+            max-width: 30rem;
+            margin: 0 auto;
+            border-radius: .5rem;
+            background-color: var(--light-bg);
+            padding: 3rem 2rem;
+            text-align:center;
+        }
+        .view-company .details .info img{
+            height: 10rem;
+            width: 10rem;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+        .view-company .details .info h3{
+            padding: 1.5rem 0;
+            font-size: 2rem;
+            color: var(--black);
+        }
+        .view-company .details .info p{
+            font-size: 1.6rem;
+            color: var(--light-color);
+        }
+        .view-company .details .description{
+            margin-top: 2rem;
+        }
+        .view-company .details .description h3{
+            font-size: 2.5rem;
+            color: var(--black);
+            padding: 1rem 0;
+            text-transform: capitalize;
+        }
+        .view-company .details .description p{
+            padding: .5rem 0;
+            font-size: 1.6rem;
+            color: var(--light-color);
+            line-height: 1.8;
+        }
+        .view-company .details ul li{
+            margin-left: 3rem;
+            font-size: 1.6rem;
+            color: var(--light-color);
+            padding-top: 1.5rem;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .footer .grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 30rem);
+            gap:1.5rem;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .footer .grid .box h3{
+            font-size: 2rem;
+            color: var(--black);
+            margin: 1rem 0;
+            padding-bottom: 1rem;
+            text-transform: capitalize;
+        }
+        .footer .grid .box a{
+            display: block;
+            padding: 1.5rem 0;
+            font-size: 1.6rem;
+            color: var(--light-color);
+        }
+        .footer .grid .box a i{
+           color: var(--main-color);
+           margin-right: .8rem; 
+           transition: 2s linear;
+        }
+        .footer .grid .box a:hover i{
+            margin-right: 2rem;
+        }
+        .footer .credit{
+            text-align: center;
+            padding:3rem 2rem;
+            border-top:  --border ;
+            background-color: var(--white);
+            font-size: 2rem;
+            color: var(--light-color);
+            line-height: 1.5;
+        }
+        .footer .credit span{
+            color:var(--main-color);
+            text-transform: capitalize;
+        }
+
+
+
+
+
+
+
+        @media (max-width:991px ){
+            html{
+                font-size: 51%;
+            }
+        }
+         @media (max-width:768px ){
+            #menu-btn{
+                display: inline-block ;
+            }
+            .header .flex .navbar{
+                position: absolute;
+                top: 99%; left: 0; right: 0;
+                border-top: var(--border);
+                background-color: var(--white);
+                padding: 1rem.5rem;
+                clip-path: polygon(0 0,100% 0,0 0);
+                transition: .2s linear;
+            }
+            .header .flex .navbar{
+                clip-path: polygon(0 0,100% 0,100% 100%,0 100%);  
+            }
+            .header .flex .navbar{
+                display: block;
+                padding: 1.5rem 2rem;
+            }
+
+        }
+         @media (max-width:450px ){
+            html{
+                font-size: 50%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header class="header">
+    <section class="flex">
+            <div id="menu-btn" class="fa fa-bars" style="font-size:20 px"></div>
+            <a href="home.html" class="logo"><i class="fa fa-briefcase" style="font-size: 18px"></i>JobHunt</a>
+            <nav class="navbar">
+               <a href="home.html" >home</a>
+               <a href="about.html">about us</a>
+               <a href="jobs.html" >all jobs</a>
+               <a href="contact.html">contact us</a>
+               <a href="login.html" >account</a>
+            </nav>
+            <a href="#" class="btn" style = "margin-top: 0;">post jobs</a>
+    </section>
+</header>
+
+
+<section class="view-company">
+    <h1 class="heading">company details</h1>
+    <div class="details">
+        <div class="info">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXpbXAwQPZYe21BdzLxnaSHGyAtOezjQtBp0Bj1FePnQ&s" alt="">
+            <h3>IT infosys co.</h3>
+            <p><i class="fa fa-map-marker"></i>mumbai,india</p>
+        </div>
+
+        <div class="description">
+            <h3>about company</h3>
+            <p>Welcome to [GK Job Portal ], where opportunity meets talent. 
+            Our mission is to bridge the gap between aspiring professionals and leading 
+            employers by providing a dynamic platform that caters to the needs of both job 
+            seekers and recruiters. We pride ourselves on offering personalized experiences,
+            leveraging cutting-edge technology to ensure seamless connections.</p>
+        </div>
+        <ul>
+            <li>3 job posted</li>
+            <li>established at 21-05-2004</li>
+            <li>253 working employees</li>
+        </ul>
+    </div>
+</section>
+
+<section class="jobs-container">
+
+    <h1 class="heading">jobs they offer</h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="company">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXpbXAwQPZYe21BdzLxnaSHGyAtOezjQtBp0Bj1FePnQ&s" alt="">
+                <div>
+                <h3>IT infosys co.</h3>
+                <p>5 days ago</p>
+                </div>
+            </div>
+            <h3 class="job-title">senior python developer</h3>
+            <p class="location"><i class="fa fa-map-marker"></i> <span>mumbai, india</span></p>
+            <div class="tags">
+                <p class="fa fa-inr">20k-54k</p>
+                <p><i class="fa fa-briefcase"></i><span>part-time</span></p>
+                <p><i class="fa fa-clock-o"><span>day shift</span></i></p>
+            </div>
+            <div class="flex-btn">
+                <a href="view_job.html" class="btn">view details</a>
+                <button type="submit" class="fa fa-heart" name="save"></button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="company">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsFKAyKVhiO9L8FewWrOjrrUM4RMiNCwjPGqJHnqQmew&s" alt="">
+                <div>
+                <h3>IT infosys co.</h3>
+                <p>5 days ago</p>
+                </div>
+            </div>
+            <h3 class="job-title">javascript developer</h3>
+            <p class="location"><i class="fa fa-map-marker"></i> <span>punjab, india</span></p>
+            <div class="tags">
+                <p class="fa fa-inr">70k-94k</p>
+                <p><i class="fa fa-briefcase"></i><span>fresher</span></p>
+                <p><i class="fa fa-clock-o"><span>flexible shift</span></i></p>
+            </div>
+            <div class="flex-btn">
+                <a href="view_job.html" class="btn">view details</a>
+                <button type="submit" class="fa fa-heart" name="save"></button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="company">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXMWEXzye1uAhKZnNt7NuYlRcc7H_tBg4N-A&s" alt="">                      
+                <div>
+                <h3>IT infosys co.</h3>
+                <p>17 days ago</p>
+                </div>
+            </div>
+            <h3 class="job-title">junior front end </h3>
+            <p class="location"><i class="fa fa-map-marker"></i> <span>navi,mumbai, india</span></p>
+            <div class="tags">
+                <p class="fa fa-inr">40k-64k</p>
+                <p><i class="fa fa-briefcase"></i><span>contract</span></p>
+                <p><i class="fa fa-clock-o"><span>general shift</span></i></p>
+            </div>
+            <div class="flex-btn">
+                <a href="view_job.html" class="btn">view details</a>
+                <button type="submit" class="fa fa-heart" name="save"></button>
+            </div>
+        </div>
+    
+    </div>
+
+</section>
+
+
+
+<footer class="footer">
+    <section class="grid">
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="home.html"><i class="fa fa-angle-right"  style="font-size:20px;"></i>home</a>
+            <a href="about.html"><i class="fa fa-angle-right" style="font-size:20px;"></i>about</a>
+            <a href="jobs.html"><i class="fa fa-angle-right" style="font-size:20px;"></i>all jobs</a>
+            <a href="contact.html"><i class="fa fa-angle-right" style="font-size:20px;"></i>contact us</a>
+            <a href="#"><i class="fa fa-angle-right" style="font-size:20px;"></i>filter search </a>
+        </div>
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#"><i class="fa fa-angle-right" style="font-size:20px;"></i>account</a>
+            <a href="login.html"><i class="fa fa-angle-right" style="font-size:20px;"></i>login</a>
+            <a href="register.html"><i class="fa fa-angle-right" style="font-size:20px;"></i>register</a>
+            <a href="#"><i class="fa fa-angle-right" style="font-size:20px;"></i>post jobs</a>
+            <a href="#"><i class="fa fa-angle-right" style="font-size:20px;"></i>dashboard</a>
+        </div>
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#"><i class="fa fa-facebook-f"  style="font-size:20px;"></i> facebook</a>
+            <a href="#"><i class="fa fa-twitter"     style="font-size:20px;"></i> twitter</a>
+            <a href="#"><i class="fa fa-instagram"   style="font-size:20px;"></i> instagram</a>
+            <a href="#"><i class="fa fa-linkedin-square" style="font-size:20px;"></i> linkedin</a>
+            <a href="#"><i class="fa fa-youtube-play" style="font-size:20px;"></i> youtube</a>
+        </div>
+    </section>
+  <div class="credit">
+    &copy; copyright @ 2023 by <span>MR.GK </span> |all rights reserved!
+  </div>
+</footer>
+
+<script>
+    let navbar = document.querySelector('.header .flex  .navbar');
+
+    document.querySelector('#menu-btn').onclick  =  ()  => {
+      navbar.classList.toggle('active');
+    }
+
+    window.onscroll  =  ()  => {
+        navbar.classList.remove('active');
+    }
+
+    document.querySelectorAll('input[type="number"]').forEach(inputNumber  => {
+      inputNumber.oninput  = ()  =>{
+            if(inputNumber.value.length > inputNumber.maxLength) inputNumber.value
+            = inputNumber.value.slice(0,  inputNumber.maxLength);
+      };
+    });
+</script>
+
+</body>
+</html>
